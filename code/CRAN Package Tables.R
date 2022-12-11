@@ -4,7 +4,7 @@ pacman::p_load(tidyverse,rvest,janitor,tableHTML)
 # webshot::install_phantomjs()
 
 day <- Sys.Date()
-dir <- ("C:/Users/vjvel/Documents/weekly cran packages/data/")
+dir <- ("/home/vjvelascorios/Documentos/weekly cran packages/data/")
 
 content <- read_html("https://cran.r-project.org/web/packages/available_packages_by_date.html")
 
@@ -16,4 +16,4 @@ write_csv(table, file = paste0(dir,day," weekly cran package table.csv"))
 write_tableHTML(tableHTML(table), file = paste0(dir,day," weekly cran package table.html"))
 
 
-zip(zipfile = "C:/Users/vjvel/Documents/weekly cran packages/archive/archive.zip",files = list.files(dir,full.names = T))
+# zip(zipfile = "/home/vjvelascorios/Documentos/weekly cran packages/archive/archive.zip",files = list.files(dir,full.names = T))
