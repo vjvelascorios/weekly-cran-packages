@@ -1,6 +1,6 @@
 # Get table about the latest CRAN Packages
 rm(list=ls())
-pacman::p_load(tidyverse,rvest,janitor,tableHTML)
+pacman::p_load(readr,rvest,janitor,tableHTML)
 # webshot::install_phantomjs()
 
 day <- Sys.Date()
