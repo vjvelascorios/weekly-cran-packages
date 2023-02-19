@@ -9,7 +9,10 @@ dir <- ("/home/vjvelascorios/Documentos/weekly cran packages/data/")
 
 content <- read_html("https://cran.r-project.org/web/packages/available_packages_by_date.html")
 
+
 table <- content %>% html_table(fill = TRUE)
+
+
 table <- table[[1]] %>% 
   clean_names()
 
