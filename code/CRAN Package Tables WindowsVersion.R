@@ -5,7 +5,7 @@ pacman::p_load(readr,rvest,janitor,tableHTML)
 # webshot::install_phantomjs()
 
 day <- Sys.Date()
-dir <- ("C:\\Users\\vjvelascorios\\Documents\\weekly cran packages\\data")
+dir <- ("C:\\Users\\vjvelascorios\\Documents\\weekly cran packages\\data/")
 
 content <- read_html("https://cran.r-project.org/web/packages/available_packages_by_date.html")
 
