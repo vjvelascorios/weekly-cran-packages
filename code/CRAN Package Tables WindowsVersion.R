@@ -18,8 +18,8 @@ table <- table[[1]] %>%
 
 table <-
   table %>% 
-  mutate(Link=paste0("https://cran.r-project.org/web/packages/",table$package,"/index.html"),
-         "Package manual"=paste0("https://cran.r-project.org/web/packages/",table$package,"/",table$package,".pdf"))  
+  mutate(link=paste0("https://cran.r-project.org/web/packages/",table$package,"/index.html"),
+         "package manual"=paste0("https://cran.r-project.org/web/packages/",table$package,"/",table$package,".pdf"))  
 
 
 # table$Link <- str_replace_all(table$Link, " ", "")
