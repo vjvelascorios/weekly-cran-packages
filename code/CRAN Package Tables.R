@@ -16,6 +16,14 @@ table <- content %>% html_table(fill = TRUE)
 table <- table[[1]] %>% 
   clean_names()
 
+table <-
+  table %>% 
+  mutate(link=paste0("https://cran.r-project.org/web/packages/",table$package,"/index.html"),
+         "package manual"=paste0("https://cran.r-project.org/web/packages/",table$package,"/",table$package,".pdf"))  
+
+
+# table$Link <- str_replace_all(table$Link, " ", "")
+
 write_csv(table, file = paste0(dir,day," weekly cran package table.csv"))
 write_tableHTML(tableHTML(table), file = paste0(dir,day," weekly cran package table.html"))
 
