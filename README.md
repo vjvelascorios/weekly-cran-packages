@@ -46,4 +46,4 @@ Weekly CRAN Packages se distribuye bajo la Licencia MIT. Puedes encontrar más d
 
 ## Contacto
 
-Si tienes preguntas, comentarios o sugerencias, puedes ponerte en contacto con nosotros a través de nuestro correo electrónico: tu-correo@ejemplo.com *(reemplaza 'tu-correo@ejemplo.com' con tu dirección de correo electrónico)*.
+Si tienes preguntas, comentarios o sugerencias, puedes ponerte en contacto con nosotros a través de nuestro correo electrónico: [vj.velascorios@protonmail.com](mailto:vj.velascorios@protonmail.com).
