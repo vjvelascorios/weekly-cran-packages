@@ -42,7 +42,7 @@ El proyecto Weekly CRAN Packages está impulsado por un conjunto de scripts y he
 
 ## Licencia
 
-Weekly CRAN Packages se distribuye bajo la Licencia MIT. Puedes encontrar más detalles en el archivo [LICENSE](LICENSE) de nuestro repositorio en GitHub.
+Weekly CRAN Packages se distribuye bajo la Licencia Mozilla Public License 2.0. Puedes encontrar más detalles en el archivo [LICENSE](LICENSE) de nuestro repositorio en GitHub.
 
 ## Contacto
 
