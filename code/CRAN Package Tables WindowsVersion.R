@@ -5,7 +5,8 @@ pacman::p_load(readr,rvest,janitor,tableHTML, tidyverse)
 # webshot::install_phantomjs()
 
 day <- Sys.Date()
-dir <- ("C:\\Users\\vjvelascorios\\Documents\\weekly cran packages\\data/")
+dir <- ("C:\\Users\\vjvelascorios\\Documents\\weekly-cran-packages\\data\\")
+test <- paste0(dir,day," weekly cran package table.csv") %>% print()
 
 content <- read_html("https://cran.r-project.org/web/packages/available_packages_by_date.html")
 
@@ -25,6 +26,7 @@ table <-
 # table$Link <- str_replace_all(table$Link, " ", "")
 
 write_csv(table, file = paste0(dir,day," weekly cran package table.csv"))
+
 write_tableHTML(tableHTML(table), file = paste0(dir,day," weekly cran package table.html"))
 
 
