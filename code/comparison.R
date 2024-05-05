@@ -7,9 +7,10 @@
 
 # Limpiar entorno
 rm(list = ls())
+sink("~/comparison.log")
 
 # Cargar los paquetes necesarios
-pacman::p_load(dplyr, readr, tictoc)
+pacman::p_load(dplyr, readr, tictoc, openxlsx)
 
 # Construir las rutas a los archivos de esta semana y la semana anterior
 setwd_auto <- function() {
