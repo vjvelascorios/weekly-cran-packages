@@ -1,0 +1,55 @@
+name: Run CRAN Package Analysis
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs weekly on Sunday at midnight UTC
+  workflow_dispatch:      # Allows manual triggering
+
+jobs:
+  analyze-packages:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+          restore-keys: ${{ runner.os }}-r-
+
+      - name: Install required R packages
+        run: |
+          Rscript -e 'install.packages(c("dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://cloud.r-project.org")'
+        continue-on-error: true
+
+      - name: Run R script
+        run: Rscript "code/CRAN Package Tables.R"
+        
+      - name: Upload analysis results
+        uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: cran-analysis-results
+          path: |
+            *.html
+            *.csv
+            
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'CRAN Analysis Workflow Failed',
+              body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            })
