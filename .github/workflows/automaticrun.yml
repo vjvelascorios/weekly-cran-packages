@@ -27,7 +27,7 @@ jobs:
 
       - name: Install required R packages
         run: |
-          Rscript -e 'install.packages(c("dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://cloud.r-project.org")'
+          Rscript -e 'install.packages(c("pacman","dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://cloud.r-project.org")'
         continue-on-error: true
 
       - name: Run R script
