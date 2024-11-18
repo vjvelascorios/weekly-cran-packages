@@ -4,6 +4,7 @@ date,package,title,link,package manual
 2024-11-18,BalancedSampling,Balanced and Spatially Balanced Sampling,https://cran.r-project.org/web/packages/BalancedSampling/index.html,https://cran.r-project.org/web/packages/BalancedSampling/BalancedSampling.pdf
 2024-11-18,bfboinet,"Backfill Bayesian Optimal Interval Design Using Efficacy and
 Toxicity",https://cran.r-project.org/web/packages/bfboinet/index.html,https://cran.r-project.org/web/packages/bfboinet/bfboinet.pdf
+2024-11-18,bWGR,Bayesian Whole-Genome Regression,https://cran.r-project.org/web/packages/bWGR/index.html,https://cran.r-project.org/web/packages/bWGR/bWGR.pdf
 2024-11-18,CareDensity,"Calculate the Care Density or Fragmented Care Density Given a
 Patient-Sharing Network",https://cran.r-project.org/web/packages/CareDensity/index.html,https://cran.r-project.org/web/packages/CareDensity/CareDensity.pdf
 2024-11-18,crew.aws.batch,A Crew Launcher Plugin for AWS Batch,https://cran.r-project.org/web/packages/crew.aws.batch/index.html,https://cran.r-project.org/web/packages/crew.aws.batch/crew.aws.batch.pdf
@@ -795,7 +796,6 @@ Networks",https://cran.r-project.org/web/packages/SpatialDDLS/index.html,https:/
 2024-10-31,wintime,Win Time Methods for Time-to-Event Data in Clinical Trials,https://cran.r-project.org/web/packages/wintime/index.html,https://cran.r-project.org/web/packages/wintime/wintime.pdf
 2024-10-31,xfun,Supporting Functions for Packages Maintained by 'Yihui Xie',https://cran.r-project.org/web/packages/xfun/index.html,https://cran.r-project.org/web/packages/xfun/xfun.pdf
 2024-10-31,ympes,Collection of Helper Functions,https://cran.r-project.org/web/packages/ympes/index.html,https://cran.r-project.org/web/packages/ympes/ympes.pdf
-2024-10-30,bWGR,Bayesian Whole-Genome Regression,https://cran.r-project.org/web/packages/bWGR/index.html,https://cran.r-project.org/web/packages/bWGR/bWGR.pdf
 2024-10-30,ColOpenData,"Download Colombian Demographic, Climate and Geospatial Data",https://cran.r-project.org/web/packages/ColOpenData/index.html,https://cran.r-project.org/web/packages/ColOpenData/ColOpenData.pdf
 2024-10-30,COMBO,Correcting Misclassified Binary Outcomes in Association Studies,https://cran.r-project.org/web/packages/COMBO/index.html,https://cran.r-project.org/web/packages/COMBO/COMBO.pdf
 2024-10-30,COMMA,Correcting Misclassified Mediation Analysis,https://cran.r-project.org/web/packages/COMMA/index.html,https://cran.r-project.org/web/packages/COMMA/COMMA.pdf
