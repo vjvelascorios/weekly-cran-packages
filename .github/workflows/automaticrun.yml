@@ -8,6 +8,9 @@ on:
 jobs:
   analyze-packages:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write      # Para poder hacer push
+      issues: write       # Para crear issues en caso de fallo
     
     steps:
       - name: Checkout repository
@@ -26,20 +29,24 @@ jobs:
         with:
           r-version: 'release'
 
-      - name: Cache R packages
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
-          restore-keys: ${{ runner.os }}-r-
-
       - name: Install required R packages
         run: |
           Rscript -e 'install.packages(c("pacman","dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://cloud.r-project.org")'
 
       - name: Run R script
         run: Rscript "CRAN Package Tables.R"
-        
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+
+      - name: Commit and push changes
+        run: |
+          git add *.html *.csv
+          git commit -m "Update CRAN analysis results [skip ci]" || echo "No changes to commit"
+          git push
+
       - name: Upload analysis results
         uses: actions/upload-artifact@v3
         if: success()
@@ -48,7 +55,7 @@ jobs:
           path: |
             *.html
             *.csv
-            
+
       - name: Notify on failure
         if: failure()
         uses: actions/github-script@v6
