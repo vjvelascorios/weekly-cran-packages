@@ -44,7 +44,7 @@ jobs:
       - name: Commit and push changes
         run: |
           git add *.html *.csv
-          git commit -m "Update CRAN analysis results [skip ci]" || echo "No changes to commit"
+          git commit -m "Update CRAN analysis results" || echo "No changes to commit"
           git push
 
       - name: Upload analysis results
