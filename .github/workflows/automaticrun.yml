@@ -1,7 +1,7 @@
 name: Run CRAN Package Analysis
 
 on: 
-  schedule:
+  schedule: 
     - cron:  '0 0 * * 0'  # Runs weekly on Sunday at midnight UTC
   workflow_dispatch:      # Allows manual triggering
 
@@ -10,9 +10,9 @@ jobs:
     runs-on:  ubuntu-latest
     permissions: 
       contents: write      # Para poder hacer push
-      issues:  write       # Para crear issues en caso de fallo
+      issues: write        # Para crear issues en caso de fallo
     
-    steps:
+    steps: 
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -29,22 +29,27 @@ jobs:
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: 'release'
-          use-public-rspm: true  # Uses pre-compiled binaries! 
+          use-public-rspm: true  # Uses pre-compiled binaries!  
+
+      - name: Set R_LIBS_USER environment variable
+        run: |
+          mkdir -p ${HOME}/.R/library
+          echo "R_LIBS_USER=${HOME}/.R/library" >> $GITHUB_ENV
 
       - name: Setup R dependencies cache
         uses: actions/cache@v4
         with:
-          path:  ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ hashFiles('CRAN Package Tables.R') }}
+          path: ${{ env.R_LIBS_USER }}
+          key:  ${{ runner.os }}-r-${{ hashFiles('CRAN Package Tables.R') }}
           restore-keys: |
             ${{ runner.os }}-r-
 
       - name: Install required R packages
         run: |
-          Rscript -e 'install.packages(c("pacman","dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://packagemanager.posit.co/cran/__linux__/jammy/latest", Ncpus = 2)'
+          Rscript -e 'install.packages(c("pacman","dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://packagemanager.posit.co/cran/__linux__/noble/latest", Ncpus=2)'
 
       - name: Run R script
-        run: Rscript "CRAN Package Tables.R"
+        run: Rscript "CRAN Package Tables. R"
 
       - name: Configure Git
         run: |
@@ -71,12 +76,12 @@ jobs:
           if-no-files-found: warn
 
       - name: Upload R logs
-        uses:  actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: r-logs
           path: |
-            ./*.Rout
+            ./*. Rout
             . /*.log
           retention-days: 7
 
