@@ -14,7 +14,9 @@ jobs:
     
     steps:
       - name: Install system dependencies
-        run: sudo apt-get install -y libjpeg-dev libpng-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libjpeg-dev libpng-dev
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -84,3 +86,4 @@ jobs:
               title: 'CRAN Analysis Workflow Failed',
               body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
             })
+
