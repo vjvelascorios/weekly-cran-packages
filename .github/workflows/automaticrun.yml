@@ -1,6 +1,6 @@
 name: Run CRAN Package Analysis
 
-on:
+on: 
   schedule:
     - cron: '0 0 * * 0'  # Runs weekly on Sunday at midnight UTC
   workflow_dispatch:      # Allows manual triggering
@@ -10,21 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write      # Para poder hacer push
-      issues: write       # Para crear issues en caso de fallo
+      issues:  write       # Para crear issues en caso de fallo
     
     steps:
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libjpeg-dev libpng-dev
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install system dependencies
+      - name:  Update and install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
+            libjpeg-dev libpng-dev \
             libcurl4-openssl-dev \
             libssl-dev \
             libxml2-dev
@@ -44,7 +40,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --global user. email 'actions@github.com'
 
       - name: Commit and push changes
         run: |
@@ -53,11 +49,11 @@ jobs:
           git push
 
       - name: Upload analysis results
-        uses: actions/upload-artifact@v4
+        uses:  actions/upload-artifact@v4
         if: always()  # Run even if previous steps fail
         with:
           name: cran-analysis-results
-          path: |
+          path:  |
             *.html
             *.csv
             *.log
@@ -71,19 +67,18 @@ jobs:
         with:
           name: r-logs
           path: |
-            ./*.Rout
+            ./*. Rout
             ./*.log
           retention-days: 7
 
       - name: Notify on failure
         if: failure()
         uses: actions/github-script@v6
-        with:
+        with: 
           script: |
-            github.rest.issues.create({
+            github. rest.issues.create({
               owner: context.repo.owner,
-              repo: context.repo.repo,
+              repo: context.repo. repo,
               title: 'CRAN Analysis Workflow Failed',
               body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
             })
-
