@@ -49,12 +49,12 @@ jobs:
           Rscript -e 'install.packages(c("pacman","dplyr", "readr", "janitor", "tableHTML", "rvest", "knitr", "rmarkdown"), repos="https://packagemanager.posit.co/cran/__linux__/noble/latest", Ncpus=2)'
 
       - name: Run R script
-        run: Rscript "CRAN Package Tables. R"
+        run: Rscript "CRAN Package Tables.R"
 
       - name: Configure Git
         run: |
           git config --global user.name 'GitHub Actions'
-          git config --global user. email 'actions@github.com'
+          git config --global user.email 'actions@github.com'
 
       - name: Commit and push changes
         run: |
@@ -81,8 +81,8 @@ jobs:
         with:
           name: r-logs
           path: |
-            ./*. Rout
-            . /*.log
+            ./*.Rout
+            ./*.log
           retention-days: 7
 
       - name:  Notify on failure
@@ -94,5 +94,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: 'CRAN Analysis Workflow Failed',
-              body: `Workflow run failed: ${context. serverUrl}/${context.repo. owner}/${context.repo.repo}/actions/runs/${context.runId}`
+              body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
             })
