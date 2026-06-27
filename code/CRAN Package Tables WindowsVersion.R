@@ -27,7 +27,7 @@ table <-
 
 write_csv(table, file = paste0(dir,day," weekly cran package table.csv"))
 
-write_tableHTML(tableHTML(table), file = paste0(dir,day," weekly cran package table.html"))
+#write_tableHTML(tableHTML(table), file = paste0(dir,day," weekly cran package table.html"))
 
 
 # zip(zipfile = "/home/vjvelascorios/Documentos/weekly cran packages/archive/archive.zip",files = list.files(dir,full.names = T))

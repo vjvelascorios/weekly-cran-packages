@@ -58,7 +58,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add data/*.html data/*.csv
+          git add  data/*.csv
           git commit -m "Update CRAN analysis results [skip ci]" || echo "No changes to commit"
           git push
 
@@ -68,7 +68,6 @@ jobs:
         with:
           name: cran-analysis-results
           path:  |
-            data/*.html
             data/*.csv
             *.log
             *.Rout
